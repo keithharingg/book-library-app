@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './BookList.css';
-import { removeBook } from '../../redux/books/actionCreators';
+import { addBook, removeBook } from '../../redux/books/actionCreators';
 
 const BookList = () => {
   const books = useSelector((state) => state.books); // hook useSelector subscribes on chunk of needed state (books in this variant)
@@ -8,6 +8,7 @@ const BookList = () => {
   const removeHandler = (id) => {
     dispatch(removeBook(id));
   };
+
   return (
     <div className="app-block book-list">
       <h2>Books List</h2>
