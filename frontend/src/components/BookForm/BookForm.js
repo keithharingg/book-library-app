@@ -16,6 +16,7 @@ const BookForm = () => {
         title,
         author,
         id: uuidv4(),
+        isFavorite: false,
       };
       // dispatch action
       dispatch(addBook(book));
@@ -25,7 +26,7 @@ const BookForm = () => {
   };
   const addRandomBookHandler = () => {
     const randomIndex = Math.floor(Math.random() * booksData.length);
-    const randomBook = { ...booksData[randomIndex], id: uuidv4() };
+    const randomBook = { ...booksData[randomIndex], id: uuidv4(), isFavorite: false };
     dispatch(addBook(randomBook));
   };
   return (
