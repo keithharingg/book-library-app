@@ -23,7 +23,7 @@ const BookList = () => {
 
   return (
     <div className="app-block book-list">
-      <h2>Books List</h2>
+      <h2>Books list</h2>
       {books.length === 0 ? (
         <p>No books have been added yet.</p>
       ) : (
