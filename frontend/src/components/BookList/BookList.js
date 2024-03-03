@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import './BookList.css';
 import { removeBook, toggleFavorite } from '../../redux/books/actionCreators';
 import { BsBookmarkStar, BsBookmarkStarFill } from 'react-icons/bs';
-import { selectTitleFilter } from '../../redux/slices/filterSlice';
+import { selectAuthorFilter, selectTitleFilter } from '../../redux/slices/filterSlice';
 
 const BookList = () => {
   const books = useSelector((state) => state.books); // hook useSelector subscribes on chunk of needed state (books in this variant)
   const titleFilter = useSelector(selectTitleFilter);
+  const authorFilter = useSelector(selectAuthorFilter);
   const dispatch = useDispatch();
   const removeHandler = (id) => {
     dispatch(removeBook(id));
@@ -18,7 +19,8 @@ const BookList = () => {
 
   const filteredBooks = books.filter((book) => {
     const matchesTitle = book.title.toLowerCase().includes(titleFilter.toLowerCase());
-    return matchesTitle;
+    const matchesAuthor = book.author.toLowerCase().includes(authorFilter.toLowerCase());
+    return matchesTitle && matchesAuthor;
   });
 
   return (
