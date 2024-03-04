@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './BookList.css';
-import { removeBook, toggleFavorite } from '../../redux/books/actionCreators';
+import { removeBook, selectBooks, toggleFavorite } from '../../redux/slices/booksSlice';
 import { BsBookmarkStar, BsBookmarkStarFill } from 'react-icons/bs';
 import {
   selectAuthorFilter,
@@ -9,7 +9,7 @@ import {
 } from '../../redux/slices/filterSlice';
 
 const BookList = () => {
-  const books = useSelector((state) => state.books); // hook useSelector subscribes on chunk of needed state (books in this variant)
+  const books = useSelector(selectBooks); // hook useSelector subscribes on chunk of needed state (books in this variant)
   const titleFilter = useSelector(selectTitleFilter);
   const authorFilter = useSelector(selectAuthorFilter);
   const onlyFavoriteFilter = useSelector(selectOnlyFavoriteFilter);
